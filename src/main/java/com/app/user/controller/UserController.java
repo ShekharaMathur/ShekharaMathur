@@ -60,7 +60,7 @@ public class UserController {
 	
 	
 	@GetMapping("/users")
-    public ResponseEntity<SimplePage<UserDto>> getAllRoles(
+	public ResponseEntity<SimplePage<UserDto>> getAllRoles(
             @SortDefault(sort = "id") @PageableDefault(size = 2) final Pageable pageable) {
 		
         return ResponseEntity.ok(this.userService.getAll(pageable));
