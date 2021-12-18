@@ -1,9 +1,7 @@
 package com.app.user.controller;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.SortDefault;
 import org.springframework.http.HttpStatus;
@@ -32,10 +30,9 @@ public class UserController {
 	@PostMapping("/users")
 	public ResponseEntity<UserDto> createUser(@Validated @RequestBody UserDto userDto) {
 		
+		UserDto savedUsedDto = this.userService.save(userDto);
 		
-			UserDto savedUsedDto = this.userService.save(userDto);
-		
-			return new ResponseEntity<UserDto>(savedUsedDto, HttpStatus.CREATED);
+		return new ResponseEntity<UserDto>(savedUsedDto, HttpStatus.CREATED);
 		
 	}
 
@@ -61,9 +58,12 @@ public class UserController {
 		
 	}
 	
+	
 	@GetMapping("/users")
     public ResponseEntity<SimplePage<UserDto>> getAllRoles(
             @SortDefault(sort = "id") @PageableDefault(size = 2) final Pageable pageable) {
+		
         return ResponseEntity.ok(this.userService.getAll(pageable));
+        
     }
 }
