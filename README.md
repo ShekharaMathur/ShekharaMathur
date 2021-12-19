@@ -18,11 +18,11 @@ This project built using Java and the following tools:
 
 Domain
 
-Domain model is organized under the Domain package and it consists of entity class. Entity use various annotations that describe the relationships between each other. All these annotations are used by JPA in order to map entities to database tables.
+Domain model is organized under the Domain package and it consists of entity class. Entities use various annotations that describe the relationships between each other. All these annotations are used by JPA in order to map entities to database tables.
 
 DTO
 
-In order to decouple the model/domain layer from the client side. only the needed data can be populated using DTO, instead of populating the entire model. For small projects (like this), it is common for a DTO to be identical with the corresponding model. in order to implement a more scalable application DTOs are better approch.
+In order to decouple the model/domain layer from the client side. only the needed data can be populated using DTO, instead of populating the entire model/domain. For small projects (like this), it is common for a DTO to be identical with the corresponding model. in order to implement a more scalableapplication DTOs are better approch.
 
 Repository
 
@@ -34,7 +34,7 @@ Service layer depends on the repository layer and provides separation of concern
 
 Controller
 
-Controller layer depends on the service layer and is responsible for the incoming requests and the outgoing responses. A controller determines all the available endpoints that client side (or other api) is able to call. This layer should not apply logic on the receiving or returning data.
+Controller layer depends on the service layer and is responsible for the incoming requests and the outgoing responses. A controller determines all theavailable endpoints that client side (or other api) is able to call. This layer should not apply logic on the receiving or returning data.
 
 Quick Start
 
