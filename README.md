@@ -1,4 +1,4 @@
-# ShekharaMathur'
+# Shekhara Mathur'
 
 #RESTful API that allows you to manage Users
 
