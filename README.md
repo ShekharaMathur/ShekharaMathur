@@ -4,12 +4,17 @@ RESTful API that allows you to manage Users
 
 This project built using Java and the following tools:
 
--Spring Boot as server side framework<\br>
--Maven as build automation tool<\br>
--Hibernate as ORM / JPA implementation<\br>
--Postgres as database implementation<\br>
--Spring Data JPA as the top layer over Hibernate<\br>
--Application StructureApplication Structure<\br>
+-Spring Boot as server side framework
+
+-Maven as build automation tool
+
+-Hibernate as ORM / JPA implementation
+
+-Postgres as database implementation
+
+-Spring Data JPA as the top layer over Hibernate
+
+-Application StructureApplication Structure
 
 Domain
 
@@ -84,4 +89,4 @@ The app defines following CRUD APIs.
 
 `PUT /api/v1/users/{userId}`
 
-`DELETE /api/v1/users/{userId}1
+`DELETE /api/v1/users/{userId}`
