@@ -1,6 +1,4 @@
-# Shekhara Mathur'
-
-#RESTful API that allows you to manage Users
+# RESTful API that allows you to manage Users
 
 This project built using Java and the following tools:
 
