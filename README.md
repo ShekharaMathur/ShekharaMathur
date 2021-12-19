@@ -1,6 +1,6 @@
 # ShekharaMathur'
 
-RESTful API that allows you to manage Users
+#RESTful API that allows you to manage Users
 
 This project built using Java and the following tools:
 
@@ -14,7 +14,7 @@ This project built using Java and the following tools:
 
 -Spring Data JPA as the top layer over Hibernate
 
--Application StructureApplication Structure
+###Application Structure
 
 Domain
 
