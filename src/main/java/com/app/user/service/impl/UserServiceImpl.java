@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
 		User user = this.dtoToDomain(userDto);
 		User savedUser = null;
 		try {
-			this.userRepository.save(user);
+			savedUser = this.userRepository.save(user);
 		}catch (Exception e) {
 			throw new UserAlreadyExistsException("User already present in db");
 		}
