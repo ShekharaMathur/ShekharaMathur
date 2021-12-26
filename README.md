@@ -40,8 +40,7 @@ In this app, Users primary details like name, email, phone, city are stored in a
 
 The table looks like below.
 
-
-
+![Uploading image.png…]()
 
 ####Quick Start
 
