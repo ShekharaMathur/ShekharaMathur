@@ -39,7 +39,7 @@ Controller layer depends on the service layer and is responsible for the incomin
 In this app, Users primary details like name, email, phone, city are stored in a USERS table and Optional User Preferences are stored in  separate table called USERPREFERENCES, and they have a one-to-one relationship between USERS and USERPREFERENCES table.
 
 The table looks like below.
-![Screenshot](Screen Shot 2021-12-26 at 4.54.17 PM.png)
+![stack Overflow](https://github.com/ShekharaMathur/ShekharaMathur/blob/main/Screen%20Shot%202021-12-26%20at%204.54.17%20PM.png)
 
 ####Quick Start
 
