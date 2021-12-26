@@ -7,6 +7,9 @@ import com.app.user.domain.User;
 //import com.app.user.dto.UserDto;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long>{
+public interface UserRepository extends JpaRepository<User, Long> {
 
+	User findByEmail(String email);
+
+	User findByPhone(String phone);
 }

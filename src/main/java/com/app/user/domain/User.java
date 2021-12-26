@@ -1,42 +1,50 @@
 package com.app.user.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 @Entity
 @Table(name = "users")
+@Accessors(chain = true)
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column(name = "name")
-	@NotNull
-	@Size(min = 3, max = 50)
+
+	@Column(length = 100, nullable = false)
 	private String name;
-	
-	@Column(name = "email")
-	@NotNull
-	@Email(message = "Email should be valid")
+
+	@Column(unique = true, nullable = false)
 	private String email;
-	
-	@Column(name = "phone")
-	@NotNull
-	@Size(min = 10, max = 10)
+
+	@Column(unique = true, nullable = false)
 	private String phone;
-	
-	@Column(name = "city")
-	@NotNull
-	@Size(min = 3, max = 20)
+
+	@Column(length = 50, nullable = false)
 	private String city;
+
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
+	private UserPreference userPreference;
 
 	public User() {
 
