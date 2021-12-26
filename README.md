@@ -100,7 +100,7 @@ The following API's defines for User Preferences setting
 
 `POST /api/v1/users/{id}/preferences`
 
-`PUT /api/v1/users/{id}/updatepreferences`
+`PUT /api/v1/users/{id}/update-preferences`
 
 `GET /api/v1/users/{id}/get-preferences`
 
