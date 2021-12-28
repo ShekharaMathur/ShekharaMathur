@@ -39,9 +39,7 @@ Controller layer depends on the service layer and is responsible for the incomin
 In this app, Users primary details like name, email, phone, city are stored in a USERS table and Optional User Preferences are stored in  separate table called USERPREFERENCES, and they have a one-to-one relationship between USERS and USERPREFERENCES table.
 
 The table looks like below.
-
-
-
+![stack Overflow](https://github.com/ShekharaMathur/ShekharaMathur/blob/main/Screen%20Shot%202021-12-26%20at%204.54.17%20PM.png)
 
 ####Quick Start
 
@@ -102,7 +100,7 @@ The following API's defines for User Preferences setting
 
 `POST /api/v1/users/{id}/preferences`
 
-`PUT /api/v1/users/{id}/updatepreferences`
+`PUT /api/v1/users/{id}/update-preferences`
 
 `GET /api/v1/users/{id}/get-preferences`
 
