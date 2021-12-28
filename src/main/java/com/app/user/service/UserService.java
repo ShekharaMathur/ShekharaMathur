@@ -4,6 +4,7 @@ import javax.validation.ConstraintViolationException;
 
 import org.springframework.data.domain.Pageable;
 
+import com.app.user.domain.User;
 import com.app.user.dto.UserDto;
 //import com.app.user.exception.UserAlreadyExistsException;
 import com.app.user.utils.SimplePage;

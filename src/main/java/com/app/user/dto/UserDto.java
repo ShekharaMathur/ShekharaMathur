@@ -27,21 +27,34 @@ public class UserDto {
 	@NotEmpty(message = "The City is required.")
 	private String city;
 
+	private UserPreferenceDto userPreference;
+	
 	public UserDto() {
-
+		
 	}
 
 	public UserDto(Long id,
 			@NotEmpty(message = "The full name is required and length is between 2 to 50 characters.") @Size(min = 2, max = 50) String name,
 			@NotEmpty(message = "The email address is required.") @Email(message = "The email address is invalid.", flags = Flag.CASE_INSENSITIVE) String email,
 			@NotEmpty(message = "The Mobile num is required.") String phone,
-			@NotEmpty(message = "The City is required.") String city) {
+			@NotEmpty(message = "The City is required.") String city, UserPreferenceDto userPreference) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
 		this.city = city;
+		this.userPreference = userPreference;
+	}
+	
+	
+
+	public UserPreferenceDto getUserPreferenceDto() {
+		return userPreference;
+	}
+
+	public void setUserPreferenceDto(UserPreferenceDto userPreference) {
+		this.userPreference = userPreference;
 	}
 
 	public Long getId() {

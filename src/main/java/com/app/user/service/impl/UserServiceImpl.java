@@ -11,9 +11,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.app.user.domain.User;
+import com.app.user.domain.UserPreference;
 import com.app.user.dto.UserDto;
+import com.app.user.dto.UserPreferenceDto;
 import com.app.user.exception.EntityNotFoundException;
 import com.app.user.exception.UserAlreadyPresentException;
+import com.app.user.repository.UserPreferenceRepository;
 //import com.app.user.exception.ResourceNotFoundException;
 //import com.app.user.exception.UserAlreadyExistsException;
 import com.app.user.repository.UserRepository;
@@ -25,6 +28,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepository userRepository;
+
+	@Autowired
+	private UserPreferenceRepository userPreferenceRepository;
 
 	@Override
 	public UserDto save(UserDto userDto) {
@@ -57,7 +63,23 @@ public class UserServiceImpl implements UserService {
 		User user = this.userRepository.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("Resource not found for id " + id));
 
-		return new UserDto(user);
+		UserPreference userPreference = this.userPreferenceRepository.findByUserId(id);
+
+		UserDto retUserDto = new UserDto();
+
+		if (userPreference != null) {
+			UserPreferenceDto userPreferences = new UserPreferenceDto(userPreference);
+			retUserDto.setUserPreferenceDto(userPreferences);
+		}
+
+		// Todo Call Constructor with fields
+		retUserDto.setId(user.getId());
+		retUserDto.setName(user.getName());
+		retUserDto.setEmail(user.getEmail());
+		retUserDto.setPhone(user.getPhone());
+		retUserDto.setCity(user.getCity());
+
+		return retUserDto;
 	}
 
 	@Override

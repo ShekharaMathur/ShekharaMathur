@@ -1,5 +1,6 @@
 package com.app.user.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -17,15 +18,24 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 @Entity
 @Table(name = "users")
-@Accessors(chain = true)
-public class User {
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "userPreference" })
+public class User implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,7 +53,7 @@ public class User {
 	@Column(length = 50, nullable = false)
 	private String city;
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
+	@JsonIgnoreProperties("user")
 	private UserPreference userPreference;
 
 	public User() {
@@ -97,11 +107,6 @@ public class User {
 
 	public void setCity(String city) {
 		this.city = city;
-	}
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", phone=" + phone + ", city=" + city + "]";
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.app.user.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import lombok.experimental.Accessors;
 
@@ -16,13 +17,22 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Table(name = "userpreference")
-@Accessors(chain = true)
-public class UserPreference {
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "user" })
+public class UserPreference implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -103,12 +113,6 @@ public class UserPreference {
 
 	public void setInterests(String interests) {
 		this.interests = interests;
-	}
-
-	@Override
-	public String toString() {
-		return "UserPreference [id=" + id + ", nickName=" + nickName + ", dateOfBirth=" + dateOfBirth + ", gender="
-				+ gender + ", interests=" + interests + "]";
 	}
 
 }
