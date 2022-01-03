@@ -18,10 +18,12 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.app.user.utils.UserView;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -53,12 +55,19 @@ public class User implements Serializable {
 	@Column(length = 50, nullable = false)
 	private String city;
 
-	@JsonIgnoreProperties("user")
-	private UserPreference userPreference;
-
 	public User() {
 
 	}
+	
+	public User(String name, String email, String phone, String city) {
+		//super();
+		this.name = name;
+		this.email = email;
+		this.phone = phone;
+		this.city = city;
+	}
+
+
 
 	public User(Long id, String name, String email, String phone, String city) {
 		super();

@@ -54,8 +54,29 @@ public class UserPreference implements Serializable {
 	@JoinColumn(name = "user_id", nullable = false)
 	private User user;
 
+	private Long uid;
+
 	public UserPreference() {
 
+	}
+	
+	public UserPreference(String nickName, Date dateOfBirth, String gender, String interests, Long uid) {
+		super();
+		this.nickName = nickName;
+		this.dateOfBirth = dateOfBirth;
+		this.gender = gender;
+		this.interests = interests;
+		this.uid = uid;
+	}
+
+
+
+	public UserPreference(String nickName, Date dateOfBirth, String gender, String interests) {
+		// super();
+		this.nickName = nickName;
+		this.dateOfBirth = dateOfBirth;
+		this.gender = gender;
+		this.interests = interests;
 	}
 
 	public User getUser() {

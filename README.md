@@ -41,6 +41,23 @@ In this app, Users primary details like name, email, phone, city are stored in a
 The table looks like below.
 ![stack Overflow](https://github.com/ShekharaMathur/ShekharaMathur/blob/main/Screen%20Shot%202021-12-26%20at%204.54.17%20PM.png)
 
+#### Views for the domains/results 
+Many times we may required to provide different views of the same domain to different requirements. this, we may end-up in creating many DTO's to present it.
+We can solve this by using Jackson's (@JsonView) view. It is similar to database views, where we can build multiple virtual tables with different combinations of columns in the underlying table, we can define multiple views of the same Domain/DTOs with different combinations of fields.
+
+##### Usuage
+1. Define View as class or Interface.
+2. Use @JsonView annotation in Domain/DTO to map fields to one or more views.
+
+Jackson reads these @JsonView annotations on fields during serialization/ de-serialization of objects and serialize/deserialize only fields in view and will skip all other fields. 
+
+@JsonView annotation directly can be leveraged to customize, control the serialization/deserialization of REST API response and request body data.
+
+`@GetMapping("/api/v1/users")`
+`@JsonView(value = @JsonView(UserView.BaseView.class))`
+
+This will render only @JsonView marked fields to to api/v1/users api calls.
+
 ####Quick Start
 
 #####Prerequisites
@@ -78,9 +95,15 @@ Goto user folder then run the following
 
 `mvn spring-boot:run`
 
-The server will start running at `http://localhost:8080`.
+#### Java Faker
 
-After running
+This library is a port of Ruby's faker gem (as well as Perl's Data::Faker library) that generates fake data. It's useful when you're developing a new project and need some pretty data for showcase.
+
+References "https://github.com/DiUS/java-faker"
+
+This is used in this project to populate the User and UserPrefernce model during app start/run.
+
+The server will start running at `http://localhost:8080`.
 
 #######Explore Rest APIs
 

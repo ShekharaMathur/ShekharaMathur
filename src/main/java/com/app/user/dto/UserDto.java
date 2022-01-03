@@ -8,6 +8,8 @@ import javax.validation.constraints.Size;
 import org.springframework.beans.BeanUtils;
 
 import com.app.user.domain.User;
+import com.app.user.utils.UserView;
+import com.fasterxml.jackson.annotation.JsonView;
 
 public class UserDto {
 
@@ -15,10 +17,12 @@ public class UserDto {
 
 	@NotEmpty(message = "The full name is required and length is between 2 to 50 characters.")
 	@Size(min = 2, max = 50)
+	@JsonView(UserView.BaseView.class)
 	private String name;
 
 	@NotEmpty(message = "The email address is required.")
 	@Email(message = "The email address is invalid.", flags = { Flag.CASE_INSENSITIVE })
+	@JsonView(UserView.BaseView.class)
 	private String email;
 
 	@NotEmpty(message = "The Mobile num is required.")

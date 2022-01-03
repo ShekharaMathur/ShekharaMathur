@@ -1,5 +1,7 @@
 package com.app.user.service;
 
+import java.util.List;
+
 import javax.validation.ConstraintViolationException;
 
 import org.springframework.data.domain.Pageable;
@@ -20,5 +22,7 @@ public interface UserService {
 	UserDto updateById(Long id, UserDto userDto);
 
 	SimplePage<UserDto> getAll(final Pageable pageable);
+	
+	List<UserDto> findAllUsers(Integer pageNo, Integer pageSize);
 
 }

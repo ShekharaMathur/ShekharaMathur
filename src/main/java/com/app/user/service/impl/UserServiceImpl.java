@@ -1,5 +1,7 @@
 package com.app.user.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.validation.ConstraintViolationException;
@@ -7,6 +9,7 @@ import javax.validation.ConstraintViolationException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -112,6 +115,22 @@ public class UserServiceImpl implements UserService {
 		final Page<User> page = userRepository.findAll(pageable);
 		return new SimplePage<>(page.getContent().stream().map(user -> new UserDto(user)).collect(Collectors.toList()),
 				page.getTotalElements(), pageable);
+	}
+
+	@Override
+	public List<UserDto> findAllUsers(Integer pageNo, Integer pageSize) {
+
+		Pageable paging = PageRequest.of(pageNo, pageSize);
+
+		Page<User> pagedResult = userRepository.findAll(paging);
+
+		List<User> ulist = new ArrayList<User>();
+		if (pagedResult != null && pagedResult.hasContent()) {
+			ulist = pagedResult.getContent();
+		}
+
+		return ulist.stream().map(user -> new UserDto(user)).collect(Collectors.toList());
+
 	}
 
 }

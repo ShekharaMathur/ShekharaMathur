@@ -14,12 +14,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
 import javax.validation.Valid;
 
+import com.app.user.domain.User;
 import com.app.user.dto.UserDto;
 import com.app.user.service.UserService;
 import com.app.user.utils.SimplePage;
+import com.app.user.utils.UserView;
+import com.fasterxml.jackson.annotation.JsonView;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -62,10 +69,11 @@ public class UserController {
 	}
 
 	@GetMapping("/users")
-	public ResponseEntity<SimplePage<UserDto>> getAllRoles(
-			@SortDefault(sort = "id") @PageableDefault(size = 2) final Pageable pageable) {
+	@JsonView(UserView.BaseView.class)
+	public ResponseEntity<List<UserDto>> getAllUsers(@RequestParam(defaultValue = "0") Integer pageNo,
+			@RequestParam(defaultValue = "1") Integer pageSize) {
 
-		return ResponseEntity.ok(this.userService.getAll(pageable));
-
+		return new ResponseEntity<List<UserDto>>(this.userService.findAllUsers(pageSize, pageSize), HttpStatus.OK);
 	}
+
 }
